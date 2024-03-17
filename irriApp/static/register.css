@@ -1,24 +1,38 @@
 body {
-    background-image: url('https://source.unsplash.com/random/1920x1080/?irrigation,agriculture');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #066f0b;
     font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
-.registration-container {
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+}
+
+.image-container {
+    margin-right: 40px; /* Adjust the space between the image and the form */
+}
+
+.image-container img {
+    width: 400px; /* Adjust the width of the image as needed */
+    height: 300px;
+    border-radius: 100%; /* Optional: adds rounded corners to the image */
+}
+
+.registration-container {
     max-width: 400px;
     width: 100%;
+    text-align: center;
+    max-height: 450px; /* Set a minimum height */
 }
 
 h1 {
@@ -77,22 +91,17 @@ button:hover {
     margin-bottom: 20px;
 }
 
-@media (max-width: 500px) {
-    .registration-container {
-        max-width: 100%;
-        padding: 20px;
-    }
-}
-
-
 .login-link {
     display: block;
     text-align: right;
     margin-bottom: 20px;
-  }
-  
-  .login-link a {
+}
+
+.login-link a {
     color: green;
     text-decoration: none;
-  }
-  
+}
+
+.login-link a:first-child {
+    margin-right: 40px;
+}

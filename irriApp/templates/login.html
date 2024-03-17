@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,22 +8,28 @@
   <link rel="stylesheet" href="{% static 'authentication.css' %}">
 </head>
 <body>
-  <div class="login-container">
-    <div class="register-link">
-      <a href="{% url 'register' %}">Register</a>
+  <div class="content-container">
+    <div class="image-container">
+      <img src="{% static 'image/tractor_water.jpg' %}" alt="Your Image Description">
     </div>
-    <h1>Login</h1>
-    <form method="POST" action="{% url 'login' %}">
-      {% csrf_token %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="error-message">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <input type="password" name="password" placeholder="Enter your password" required>
-      <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+      <div class="register-link">
+        <a href="{% url 'landing' %}">Home</a>
+        <a href="{% url 'register' %}">Register</a>
+      </div>
+      <h1>Login</h1>
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="error-message">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>

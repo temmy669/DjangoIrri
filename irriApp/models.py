@@ -6,5 +6,6 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True)
+    email = models.EmailField(unique=True)  # Make email unique
 
     # Add other fields if needed

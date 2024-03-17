@@ -1,19 +1,46 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My App</title>
+    <title>Dashboard - My Irrigation System</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
 </head>
 <body>
     <nav>
         <!-- Navbar content -->
+        <a href="{% url 'logout' %}">Logout</a>
     </nav>
 
-    <h1>Dashboard</h1>
-    <p>Welcome, {{ user.username}}!</p>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <p>Welcome, {{ user.get_full_name|default:user.username }}!</p>
+
+        <!-- Container for the soil moisture gauge -->
+        <div id="soil-moisture-gauge"></div> 
+
+        <!-- Button to toggle the pump -->
+        <button id="pump-toggle" onclick="togglePump()">Turn Pump ON</button>
+
+        <!-- Input for setting the time to turn on the pump -->
+        <label for="pump-timer">Set Pump Timer (24hr format - HH:MM):</label>
+        <input type="time" id="pump-timer" name="pump-timer" required>
+        <div id="message"></div>
+        <div id="pump-on-message"></div>
+
+
+        <!-- Button to set the pump timer -->
+        <button id="set-timer" onclick="setPumpTimer()">Set Timer</button>
+    </div>
 
     <footer>
         <!-- Footer content -->
     </footer>
+
+    <script src="{% static 'justguage/raphael-min.js' %}"></script> <!-- Raphael dependency for JustGage -->
+<script src="{% static 'justguage/justguage.js' %}"></script> <!-- JustGage library -->
+
+    <script src="{% static 'dashboard.js' %}"></script> <!-- Custom JavaScript for the dashboard -->
 </body>
 </html>

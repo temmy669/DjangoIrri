@@ -11,6 +11,9 @@ from .models import CustomUser
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+def land(request):
+    return render(request, 'land.html')
+
 
 def register(request):
     if request.method == 'POST':
@@ -39,4 +42,7 @@ def login_view(request):
         else:
             messages.error(request, 'Invalid email or password.')
     return render(request, 'login.html')
+
+def logout(request):
+    return render(request, 'land.html')
 

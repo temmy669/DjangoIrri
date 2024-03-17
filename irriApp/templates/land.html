@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IrrI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'land.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>IrrI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'register' %}">Signup</a>
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+        </nav>
+    </header>
+    <div class="hero">
+        <img src="{% static 'image/image_water.png' %}" alt="Luxury Irrigation" />
+        <div class="hero-content">
+            <h2>Welcome to IrrI</h2>
+            <p>Experience the epitome of luxury irrigation with our bespoke solutions.</p>
+            <!-- Add more content or buttons as needed -->
+        </div>
+    </div>
+    
+</body>
+</html>
