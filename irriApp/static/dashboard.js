@@ -4,20 +4,30 @@ let soilMoistureGauge;
 
 function togglePump() {
     const button = document.getElementById('pump-toggle');
-    const currentState = button.textContent.includes('ON') ? 1 : 0;
-    const newState = currentState === 1 ? 0 : 1;
+    const currentState = button.textContent.includes('OFF') ? 1 : 0;
+    const newState = currentState === 0 ? 1 : 0;
 
     fetch(`${BASE_URL}/update?token=${API_KEY}&V2=${newState}`, { method: 'GET' })
-        .then(() => {
-            button.textContent = newState === 1 ? 'Turn Pump OFF' : 'Turn Pump ON';
-            if (newState === 1) {
-                // Store the time when the pump is turned on in local storage
-                const lastPumpOnTime = new Date().toLocaleString();
-                localStorage.setItem('lastPumpOnTime', lastPumpOnTime);
-                document.getElementById('pump-on-message').textContent = `Last time pump was turned on: ${lastPumpOnTime}`;
+        .then(response => {
+            if (response.ok) {
+                console.log('Pump state updated successfully');
+                console.log(response, newState);
+                button.textContent = newState === 1 ? 'Turn Pump OFF' : 'Turn Pump ON';
+                //button.textContent = currentState === 0 ? 'Turn Pump ON'  : 'Turn Pump OFF'
+
+                if (newState === 1) {
+                    // Store the time when the pump is turned on in local storage
+                    const lastPumpOnTime = new Date().toLocaleString();
+                    localStorage.setItem('lastPumpOnTime', lastPumpOnTime);
+                    document.getElementById('pump-on-message').textContent = `Last time pump was turned on: ${lastPumpOnTime}`;
+                }
+            } else {
+                console.error('Error updating pump state:', response.status);
             }
         })
-        .catch(error => console.error('Error toggling pump state:', error));
+        .catch(error => {
+            console.error('Error toggling pump state:', error);
+        });
 }
 
 function updateCountdownMessage(timeDiff) {

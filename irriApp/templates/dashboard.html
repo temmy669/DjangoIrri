@@ -14,14 +14,15 @@
     </nav>
 
     <div class="dashboard-container">
-        <h1>Dashboard</h1>
-        <p>Welcome, {{ user.get_full_name|default:user.username }}!</p>
+        <h1>Welcome, {{ user.get_full_name|default:user.username }}!</h1>
+        <p></p>
 
+        <h2>Soil Moisture Gauge</h2>
         <!-- Container for the soil moisture gauge -->
         <div id="soil-moisture-gauge"></div> 
 
         <!-- Button to toggle the pump -->
-        <button id="pump-toggle" onclick="togglePump()">Turn Pump ON</button>
+        <button id="pump-toggle" onclick="togglePump()">Pump</button>
 
         <!-- Input for setting the time to turn on the pump -->
         <label for="pump-timer">Set Pump Timer (24hr format - HH:MM):</label>
@@ -34,9 +35,7 @@
         <button id="set-timer" onclick="setPumpTimer()">Set Timer</button>
     </div>
 
-    <footer>
-        <!-- Footer content -->
-    </footer>
+    
 
     <script src="{% static 'justguage/raphael-min.js' %}"></script> <!-- Raphael dependency for JustGage -->
 <script src="{% static 'justguage/justguage.js' %}"></script> <!-- JustGage library -->

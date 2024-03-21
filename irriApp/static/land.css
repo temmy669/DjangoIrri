@@ -8,7 +8,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(224, 241, 232, 0.93);
     
 }
 
@@ -67,9 +67,10 @@ main {
 
 .hero img {
     max-width: 50%; /* Adjust this as needed */
-    max-height: 50% ; /* Ensure the image height auto adjusts to maintain aspect ratio */
+    max-height: 20% ; /* Ensure the image height auto adjusts to maintain aspect ratio */
     border-radius: 10px; /* Optional: adds rounded corners to the image */
-    margin-right: 20px; /* Add some space between the image and any other content */
+    margin-right: 20px;
+    border-radius: 100%; /* Add some space between the image and any other content */
 }
 
 .hero-content {
@@ -82,7 +83,7 @@ main {
     font-weight: 700;
     font-size: 2em; /* Large text for the main headline */
     color: #4CAF50; /* Color of the headline */
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
 
 .hero-content p {
@@ -90,5 +91,5 @@ main {
     font-weight: 400;
     font-size: 1em; /* Size of the subtext */
     color:#4CAF50; /* Color of the paragraph text */
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
