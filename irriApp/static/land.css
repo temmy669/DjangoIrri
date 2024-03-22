@@ -79,7 +79,7 @@ main {
 }
 
 .hero-content h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display';
     font-weight: 700;
     font-size: 2em; /* Large text for the main headline */
     color: #4CAF50; /* Color of the headline */
