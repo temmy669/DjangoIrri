@@ -34,8 +34,8 @@ nav {
 }
 
 nav .logo h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size:3rem;
 }
 
 nav .nav-links a {
@@ -48,6 +48,10 @@ nav .nav-links a {
 nav .nav-links a:hover {
     background-color: #089131;
 }
+
+/* .logo{
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+} */
 
 /* Main */
 main {
@@ -79,17 +83,17 @@ main {
 }
 
 .hero-content h2 {
-    font-family: 'Playfair Display';
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-weight: 700;
-    font-size: 2em; /* Large text for the main headline */
+    font-size: 4em; /* Large text for the main headline */
     color: #4CAF50; /* Color of the headline */
     margin-bottom: 1em;
 }
 
 .hero-content p {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 1em; /* Size of the subtext */
+    font-weight: 500;
+    font-size: 1.3em; /* Size of the subtext */
     color:#4CAF50; /* Color of the paragraph text */
     margin-bottom: 1em;
 }
