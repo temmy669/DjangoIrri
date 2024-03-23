@@ -53,6 +53,7 @@ function setPumpTimer() {
         .catch(error => {
             console.error('Error setting pump timer:', error);
             document.getElementById('message').textContent = 'Error setting pump timer';
+            document.getElementById('message').style.color = "red";
         });
 }
 
@@ -66,6 +67,7 @@ function updateCountdownMessage() {
             document.getElementById('message').textContent = `Time remaining: ${remainingHours} hours and ${remainingMinutes} minutes.`;
         } else {
             document.getElementById('message').textContent = `Last irrigation was set for ${irrigationDetails.timeSet}`;
+        
         }
     }
 }
@@ -74,9 +76,37 @@ function refreshSoilMoisture() {
     fetch(`${BASE_URL}/get?token=${API_KEY}&V3`, { method: 'GET' })
         .then(response => response.json())
         .then(data => {
-            soilMoistureGauge.refresh(data);
+            checkHardwareConnect().then(isConnected => {
+                if (!isConnected) {
+                    data = 0;
+                    document.getElementById('device-connection-message').textContent = `Device is not connected`;
+                }
+                else{
+                    document.getElementById('device-connection-message').textContent = `Device is connected`;
+                    document.getElementById('device-connection-mesage').style.color = "#4CAF50";
+                }
+                soilMoistureGauge.refresh(data);
+            });
         })
         .catch(error => console.error('Error fetching soil moisture:', error));
+}
+
+function checkHardwareConnect() {
+    return fetch(`${BASE_URL}/isHardwareConnected?token=${API_KEY}`, { method: 'GET' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Assuming 'data' contains a boolean indicating the hardware connection status
+            return data; // Adjust this according to the actual structure of your response
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            return false; // Assume not connected in case of an error
+        });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -96,5 +126,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateCountdownMessage();
     refreshSoilMoisture(); // Fetch soil moisture data initially
-    setInterval(refreshSoilMoisture, 5000); // Set an interval to refresh the soil moisture gauge every 5 seconds
+    setInterval(refreshSoilMoisture, 1000); // Set an interval to refresh the soil moisture gauge every second
 });
